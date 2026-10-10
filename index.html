@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -421,7 +420,7 @@ a{
 
 
 /* =========================================================
-   ENVELOPE (PRECISE FLUID RESPONSIVE)
+   ENVELOPE
 ========================================================= */
 
 .envelope-stage{
@@ -728,12 +727,12 @@ a{
 
 
 /* =========================================================
-   SCENE 3 — WEDDING DAY
+   SCENE 3 — WEDDING DAY (ELEGANT CALENDAR CARD ALIGNMENT)
 ========================================================= */
 
 #scene3{
     background:
-        radial-gradient(circle at 80% 15%, rgba(232,199,200,.4), transparent 35%),
+        radial-gradient(circle at 50% 20%, rgba(232,199,200,.45), transparent 45%),
         var(--ivory);
 }
 
@@ -741,73 +740,110 @@ a{
     width:100%;
     height:100%;
     display:flex;
+    flex-direction:column;
     align-items:center;
     justify-content:center;
-    padding:calc(50px + env(safe-area-inset-top, 0px)) 20px calc(75px + env(safe-area-inset-bottom, 0px));
+    padding:calc(48px + env(safe-area-inset-top, 0px)) 18px calc(78px + env(safe-area-inset-bottom, 0px));
 }
 
-.day-grid{
-    width:min(900px,92vw);
-    display:grid;
-    grid-template-columns:1fr;
-    gap:16px;
-    align-items:center;
+.day-card{
+    width:min(440px,90vw);
+    background:rgba(255,253,249,.82);
+    border:1px solid var(--line);
+    box-shadow:0 18px 45px rgba(53,27,45,.08);
+    border-radius:12px;
+    padding:32px 24px 28px;
     text-align:center;
+    position:relative;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
 }
 
-.day-side{
+.day-card-header{
     display:flex;
-    justify-content:space-around;
+    flex-direction:column;
     align-items:center;
-    padding:0 10px;
+    gap:4px;
 }
 
-.day-item{
+.day-month{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(16px,4.2vw,22px);
+    text-transform:uppercase;
+    letter-spacing:.36em;
+    color:var(--wine);
+    font-weight:600;
+}
+
+.day-year-badge{
+    font-size:10px;
+    letter-spacing:.26em;
+    color:var(--sage);
+    text-transform:uppercase;
+}
+
+.day-hero-number{
+    font-family:"Cormorant Garamond",serif;
+    font-size:clamp(100px,26vw,165px);
+    line-height:.8;
+    color:var(--wine);
+    margin:14px 0 10px;
+    font-weight:400;
+}
+
+.day-card-divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+    margin:16px 0 18px;
+}
+
+.day-card-divider span{
+    width:36px;
+    height:1px;
+    background:var(--line-dark);
+}
+
+.day-card-divider i{
+    font-style:normal;
+    font-size:11px;
+    color:var(--wine);
+    opacity:.7;
+}
+
+.day-details-row{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    border-top:1px solid rgba(223,201,198,.55);
+    padding-top:16px;
+    margin-top:4px;
+    gap:10px;
+}
+
+.day-detail-col{
     display:flex;
     flex-direction:column;
     align-items:center;
 }
 
-.day-label{
+.day-detail-col:first-child{
+    border-right:1px solid rgba(223,201,198,.55);
+}
+
+.day-detail-tag{
+    font-size:8px;
     text-transform:uppercase;
-    letter-spacing:.22em;
-    font-size:9px;
+    letter-spacing:.24em;
     color:var(--muted);
 }
 
-.day-value{
-    margin-top:5px;
+.day-detail-val{
+    margin-top:4px;
     font-family:"Cormorant Garamond",serif;
     font-size:clamp(18px,4.6vw,24px);
     color:var(--wine);
-}
-
-.day-center{
-    text-align:center;
-    padding:22px 14px;
-    border-top:1px solid var(--line);
-    border-bottom:1px solid var(--line);
-}
-
-.day-center .month{
-    font-size:11px;
-    text-transform:uppercase;
-    letter-spacing:.35em;
-    color:var(--muted);
-}
-
-.day-number{
-    font-family:"Cormorant Garamond",serif;
-    font-size:clamp(92px,24vw,160px);
-    line-height:.78;
-    color:var(--wine);
-    margin:10px 0;
-}
-
-.day-year{
-    font-size:11px;
-    letter-spacing:.3em;
-    color:var(--sage);
+    font-weight:600;
 }
 
 
@@ -928,7 +964,7 @@ a{
 
 
 /* =========================================================
-   SCENE 5 — MOBILE-FIRST ZERO-LAG SCRATCH CARD
+   SCENE 5 — SCRATCH CARD
 ========================================================= */
 
 #scene5{
@@ -1185,7 +1221,7 @@ a{
 
 
 /* =========================================================
-   SCENE 7 — FINALE
+   SCENE 7 — FINALE (REFINED SHARE ACTIONS & TOAST)
 ========================================================= */
 
 #scene7{
@@ -1274,8 +1310,16 @@ a{
     margin-top:4px;
 }
 
+.share-action-group{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    margin-top:24px;
+    flex-wrap:wrap;
+}
+
 .share-btn{
-    margin-top:22px;
     padding:11px 22px;
     border-radius:100px;
     background:var(--blush);
@@ -1286,11 +1330,53 @@ a{
     font-weight:600;
     transition:.2s;
     touch-action:manipulation;
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:6px;
 }
 
 .share-btn:active{
     transform:scale(.97);
     background:white;
+}
+
+.share-btn.whatsapp-btn{
+    background:rgba(255,255,255,.14);
+    color:white;
+    border:1px solid rgba(255,255,255,.32);
+}
+
+.share-btn.whatsapp-btn:active{
+    background:rgba(255,255,255,.24);
+}
+
+/* Toast alert notification */
+#toastNotification{
+    position:fixed;
+    top:calc(20px + env(safe-area-inset-top, 0px));
+    left:50%;
+    transform:translateX(-50%) translateY(-30px);
+    background:rgba(53,27,45,.95);
+    color:var(--blush-light);
+    border:1px solid rgba(232,199,200,.35);
+    padding:8px 18px;
+    border-radius:50px;
+    font-size:11px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    z-index:10000;
+    opacity:0;
+    pointer-events:none;
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    box-shadow:0 10px 25px rgba(0,0,0,.25);
+    transition:transform .3s cubic-bezier(.2,.8,.2,1), opacity .3s ease;
+}
+
+#toastNotification.show{
+    transform:translateX(-50%) translateY(0);
+    opacity:1;
 }
 
 
@@ -1457,17 +1543,13 @@ a{
         font-size:52px;
     }
 
-    .day-grid{
-        grid-template-columns:1fr 1.3fr 1fr;
-        gap:25px;
+    .day-card{
+        width:480px;
+        padding:42px 34px 34px;
     }
 
-    .day-side{
-        display:block;
-    }
-
-    .day-center{
-        padding:45px 30px;
+    .day-hero-number{
+        font-size:165px;
     }
 
     .family-grid{
@@ -1720,7 +1802,7 @@ a{
 
 
 <!-- =======================================================
-     SCENE 3 — WEDDING DAY
+     SCENE 3 — WEDDING DAY (BEAUTIFULLY ALIGNED CALENDAR)
 ======================================================== -->
 
 <section class="scene" id="scene3">
@@ -1729,26 +1811,40 @@ a{
     <div class="blob one"></div>
 
     <div class="day-wrap">
-        <div class="day-grid">
 
-            <div class="day-side">
-                <div class="day-item">
-                    <div class="day-label">Day</div>
-                    <div class="day-value">Sunday</div>
-                </div>
-                <div class="day-item">
-                    <div class="day-label">Time</div>
-                    <div class="day-value">12:00 PM</div>
-                </div>
+        <div class="day-card">
+
+            <div class="day-card-header">
+                <div class="day-month">November</div>
+                <div class="day-year-badge">Year 2026</div>
             </div>
 
-            <div class="day-center">
-                <div class="month">November</div>
-                <div class="day-number">22</div>
-                <div class="day-year">2026</div>
+            <div class="day-hero-number">
+                22
+            </div>
+
+            <div class="day-card-divider">
+                <span></span>
+                <i>♥</i>
+                <span></span>
+            </div>
+
+            <div class="day-details-row">
+
+                <div class="day-detail-col">
+                    <span class="day-detail-tag">Day of Week</span>
+                    <span class="day-detail-val">Sunday</span>
+                </div>
+
+                <div class="day-detail-col">
+                    <span class="day-detail-tag">Ceremony Time</span>
+                    <span class="day-detail-val">12:00 PM</span>
+                </div>
+
             </div>
 
         </div>
+
     </div>
 
     <div class="scene-nav">
@@ -1900,7 +1996,7 @@ a{
 
 
 <!-- =======================================================
-     SCENE 7 — FINALE
+     SCENE 7 — FINALE (DEDICATED RELIABLE SHARE & WHATSAPP)
 ======================================================== -->
 
 <section class="scene" id="scene7">
@@ -1937,9 +2033,15 @@ a{
             </div>
         </div>
 
-        <button class="share-btn" id="shareBtn">
-            Share the joy
-        </button>
+        <div class="share-action-group">
+            <button class="share-btn" id="shareBtn">
+                <span>Copy / Share Link</span>
+            </button>
+            <a class="share-btn whatsapp-btn" id="whatsappShareBtn" target="_blank" rel="noopener">
+                <span>Share on WhatsApp</span>
+            </a>
+        </div>
+
     </div>
 
     <div class="scene-nav">
@@ -1950,7 +2052,7 @@ a{
 
 </div>
 
-
+<div id="toastNotification">Link copied to clipboard ✓</div>
 <div id="celebrationBlaster"></div>
 <div id="petals"></div>
 
@@ -1958,7 +2060,7 @@ a{
 <script>
 
 /* =========================================================
-   SCENE ENGINE (OPTIMIZED FOR MOBILE TOUCH & REFLOW)
+   SCENE ENGINE (MOBILE TOUCH & REFLOW TUNED)
 ========================================================= */
 
 const scenes = Array.from(document.querySelectorAll(".scene"));
@@ -1982,7 +2084,6 @@ function showScene(index){
     const newScene = scenes[index];
     const direction = index > oldIndex ? 1 : -1;
 
-    // Reset styles
     scenes.forEach(s => {
         s.classList.remove("active","leave-left","leave-right","enter-left","enter-right");
     });
@@ -2054,7 +2155,7 @@ beginBtn.addEventListener("click", () => {
 
 
 /* =========================================================
-   KEYBOARD & SWIPE (CLEAN HORIZONTAL FILTERING)
+   KEYBOARD & SWIPE
 ========================================================= */
 
 document.addEventListener("keydown", e => {
@@ -2071,13 +2172,11 @@ document.addEventListener("touchstart", e => {
 }, {passive:true});
 
 document.addEventListener("touchend", e => {
-    // If on scratch canvas, skip swipe navigation
     if(e.target === canvas || canvas.contains(e.target)) return;
 
     const diffX = e.changedTouches[0].clientX - touchStartX;
     const diffY = e.changedTouches[0].clientY - touchStartY;
 
-    // Must be predominantly horizontal gesture
     if(Math.abs(diffX) > 55 && Math.abs(diffX) > Math.abs(diffY) * 1.5){
         if(diffX < 0) nextScene();
         else previousScene();
@@ -2131,7 +2230,7 @@ function celebrationBlast(amount=38){
 
 
 /* =========================================================
-   MOBILE-FIRST ACCELERATED SCRATCH CARD
+   SCRATCH CARD
 ========================================================= */
 
 const canvas = document.getElementById("scratchCanvas");
@@ -2142,12 +2241,10 @@ let scratchFinished = false;
 let isScratching = false;
 let lastX = 0;
 let lastY = 0;
-let scratchedPixels = 0;
-let totalCheckPixels = 0;
 
 function resizeScratchCanvas(){
     const rect = canvas.getBoundingClientRect();
-    const dpr = Math.min(window.devicePixelRatio || 1, 2); // Cap at 2 for mobile CPU efficiency
+    const dpr = Math.min(window.devicePixelRatio || 1, 2);
 
     canvas.width = Math.floor(rect.width * dpr);
     canvas.height = Math.floor(rect.height * dpr);
@@ -2168,7 +2265,6 @@ function drawScratchSurface(){
     ctx.fillStyle = gradient;
     ctx.fillRect(0, 0, rect.width, rect.height);
 
-    // Decorative foil arcs
     ctx.strokeStyle = "rgba(232, 199, 200, 0.22)";
     ctx.lineWidth = 1.2;
     for(let x = -rect.height; x < rect.width + rect.height; x += 28){
@@ -2177,7 +2273,6 @@ function drawScratchSurface(){
         ctx.stroke();
     }
 
-    // Foil glitter speckles
     ctx.fillStyle = "rgba(255, 235, 240, 0.35)";
     for(let i=0; i<200; i++){
         ctx.beginPath();
@@ -2218,7 +2313,7 @@ function scratchStroke(x1, y1, x2, y2){
     ctx.globalCompositeOperation = "destination-out";
     ctx.lineCap = "round";
     ctx.lineJoin = "round";
-    ctx.lineWidth = 48; // Smooth, generous erase width for easy mobile wiping
+    ctx.lineWidth = 48;
 
     ctx.beginPath();
     ctx.moveTo(x1, y1);
@@ -2236,7 +2331,6 @@ function checkProgress(){
     const sw = Math.floor(rect.width * dpr);
     const sh = Math.floor(rect.height * dpr);
 
-    // Fast sub-sampled grid check
     const step = 16;
     let clear = 0;
     let total = 0;
@@ -2271,7 +2365,6 @@ function revealNote(){
     }, 450);
 }
 
-// Touch & Pointer Handlers
 canvas.addEventListener("pointerdown", e => {
     if(scratchFinished) return;
     isScratching = true;
@@ -2326,7 +2419,7 @@ setInterval(updateCountdown, 1000);
 
 
 /* =========================================================
-   CALENDAR (.ICS) & SHARE (NATIVE WEBSHARE)
+   CALENDAR (.ICS)
 ========================================================= */
 
 document.getElementById("calendarBtn").addEventListener("click", () => {
@@ -2355,23 +2448,76 @@ document.getElementById("calendarBtn").addEventListener("click", () => {
     setTimeout(() => URL.revokeObjectURL(url), 1000);
 });
 
-document.getElementById("shareBtn").addEventListener("click", async function(){
-    const shareData = {
-        title: "Sachin & Sachitha Wedding",
-        text: "Join us in celebrating the wedding of Sachin & Sachitha on 22 November 2026.",
-        url: window.location.href
-    };
 
+/* =========================================================
+   ROBUST SHARE SYSTEM & TOAST
+========================================================= */
+
+function showToast(msg){
+    const toast = document.getElementById("toastNotification");
+    toast.textContent = msg;
+    toast.classList.add("show");
+    setTimeout(() => {
+        toast.classList.remove("show");
+    }, 2400);
+}
+
+// Fallback clipboard copying
+async function copyToClipboard(text){
+    if(navigator.clipboard && window.isSecureContext){
+        try{
+            await navigator.clipboard.writeText(text);
+            return true;
+        }catch(e){}
+    }
+    const tempInput = document.createElement("textarea");
+    tempInput.value = text;
+    tempInput.style.position = "fixed";
+    tempInput.style.left = "-9999px";
+    tempInput.style.top = "-9999px";
+    document.body.appendChild(tempInput);
+    tempInput.focus();
+    tempInput.select();
+    let res = false;
     try{
-        if(navigator.share){
-            await navigator.share(shareData);
-        }else{
-            await navigator.clipboard.writeText(window.location.href);
-            this.textContent = "Link copied ✓";
-            setTimeout(() => { this.textContent = "Share the joy"; }, 2000);
+        res = document.execCommand("copy");
+    }catch(err){
+        res = false;
+    }
+    document.body.removeChild(tempInput);
+    return res;
+}
+
+// Universal share handler
+document.getElementById("shareBtn").addEventListener("click", async function(){
+    const currentUrl = window.location.href;
+    const shareText = "You are cordially invited to celebrate the wedding of Sachin & Sachitha on Sunday, 22 November 2026 at Saptapadi Convention Hall, Mandarthi.";
+
+    if(navigator.share){
+        try{
+            await navigator.share({
+                title: "Sachin & Sachitha Wedding",
+                text: shareText,
+                url: currentUrl
+            });
+            return;
+        }catch(err){
+            if(err.name !== "AbortError"){
+                await copyToClipboard(currentUrl);
+                showToast("Invitation link copied ✓");
+            }
         }
-    }catch(err){}
+    }else{
+        await copyToClipboard(currentUrl);
+        showToast("Invitation link copied ✓");
+    }
 });
+
+// Configure direct WhatsApp share link
+const waUrl = "https://api.whatsapp.com/send?text=" + encodeURIComponent(
+    "You are cordially invited to celebrate the wedding of Sachin & Sachitha on Sunday, 22 November 2026!\n\nView Invitation:\n" + window.location.href
+);
+document.getElementById("whatsappShareBtn").setAttribute("href", waUrl);
 
 updateProgress();
 
@@ -2379,5 +2525,3 @@ updateProgress();
 
 </body>
 </html>
-
-```
